@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{%block head%}
+    <title>Cards</title>
+
+    <style >
+    
+    #body{
+        display: flex;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+    }
+
+    #borderDemo {
+        width:30%;
+        color: black;
+        font-size:40px;
+        text-decoration:none;
+        border: 20px ridge rgba(202,62,71,0.92);
+        border-radius: 10px;
+        padding-top:150px;
+        padding-bottom:150px;
+    }
+
+    .button {
+        font-size: 20px;
+        letter-spacing: 2px;
+        background-color: #e63946ff;
+        color: #fff;
+        padding: 10px 20px;
+        margin: auto;
+        text-align: center;
+        display: inline-block !important;
+        text-decoration: none;
+        border: 0px;
+        width: max-content;
+        cursor: pointer;
+        transition: all 0.3s 0s ease-in-out;
+    }
+    
+    .button:hover {
+        transform: scale(1.1, 1);
+        background-color: rgb(216, 10, 27);
+        text-decoration: none;
+    }
+
+    #a{
+        text-decoration: none;
+        color:white;
+    }
+
+    </style>
+
+{%endblock%}
+
+{%block body%}
+<a style="color:black;" href="{{url_for('hello')}}">GO TO HOME PAGE</a>
+    <body  id="body">
+ 
+    <div id="borderDemo">
+
+        Question : {{card.question}} <br>
+        Answer : {{card.answer}} <br>
+
+    
+        <button class="button">
+            {%if index < max_index %}
+                <a id="a" href="{{url_for('card_view', index=index+1)}}">Next</a>
+            {%else%}
+                <a id="a" href="{{url_for('card_view', index=0)}}">Start Over</a>
+            {%endif%}
+        </button>
+    
+        <br>
+
+        <button class="button">
+        <a id="a" href = "{{url_for('remove_card',index=index)}}"> Remove Card</a>
+        </button>
+
+    </div>
+
+    </body>
+{%endblock%}

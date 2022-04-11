@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+
+{%block head %}
+<title> Remove Card </title>
+{%endblock%}
+
+{%block body %}
+    <h1> Remove Card </h1>
+
+    Question : {{card.question}} <br>
+    Answer : {{card.answer}} <br>
+
+
+    <h3> Are you sure ? </h3>
+
+    <form method="post">
+        <button  type="submit"> Yes </button>
+        <a href="{{url_for('hello')}}"> No </a>
+    </form>
+
+{%endblock%}
